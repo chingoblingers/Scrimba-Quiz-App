@@ -1,0 +1,14 @@
+:root {
+font-size: 62.5%
+}
+
+.intro{
+margin: auto;
+border: 1px solid black;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+font-size: 1.6rem;
+padding: 3.0rem;
+}
