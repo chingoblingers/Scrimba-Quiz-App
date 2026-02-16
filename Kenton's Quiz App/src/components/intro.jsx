@@ -1,11 +1,11 @@
-export default function Intro(props){
+export default function Intro({start}){
 
 
     return (
     <section className="intro">
     <h1> Quizzical </h1>
     <p> The test that will make you the best! </p>
-    <button onClick={props.start}> Start Quiz </button>
+    <button onClick={start}> Start Quiz </button>
     </section>
     )
 }

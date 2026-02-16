@@ -12,3 +12,18 @@ align-items: center;
 font-size: 1.6rem;
 padding: 3.0rem;
 }
+
+.wrong{
+    background-color: red;
+    color: aliceblue;
+}
+
+.correct{
+    background-color: green;
+    color: aqua;
+}
+
+.selected{
+    background-color: antiquewhite;
+    color: black;
+}
