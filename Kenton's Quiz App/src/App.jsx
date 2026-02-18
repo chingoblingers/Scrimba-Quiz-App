@@ -28,6 +28,9 @@ if(questions.length > 0 && Object.keys(chosenAnswer).length === questions.length
   allAnswered = true
 }
 
+const score = questions.reduce((accum, question, index)=>{ if (chosenAnswer[index] === question.correct_answer){ return accum + 1} else{ return accum} } , 0)
+
+
 
 
     function generateQuestionArr(){
@@ -55,7 +58,7 @@ if(questions.length > 0 && Object.keys(chosenAnswer).length === questions.length
   <main>
   {questions.length === 0 ? <Intro start={generateQuestionArr} /> : quizList}
   {allAnswered ? <div>
-        {submitted? <p> You scored X/5 correct!</p> : null}
+        {submitted? <p> You scored {score}/{questions.length} correct!</p> : null}
         <button onClick={!submitted? submitAnswers : playAgain}>{!submitted ? "Check Answers" : "Play Again" }</button>
         </div> : null}
   </main>  
