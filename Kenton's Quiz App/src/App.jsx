@@ -46,7 +46,7 @@ if(questions.length > 0 && Object.keys(chosenAnswer).length === questions.length
     const quizList = questions.map((singleQuestion, index) =>{
       const {question, choices, correct_answer} = singleQuestion
         return <QuizQuestion key={index} ask={question} choiceList={choices} questionIndex={index} 
-        chooseAnswerFunc={selectAwnser} rightAnswer={correct_answer} userAnswer={chosenAnswer[index]} />
+        chooseAnswerFunc={selectAwnser} rightAnswer={correct_answer} userAnswer={chosenAnswer[index]} onSubmit={submitted} />
       })
 
  
