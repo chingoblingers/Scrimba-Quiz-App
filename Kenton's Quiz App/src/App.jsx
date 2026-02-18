@@ -1,16 +1,34 @@
-import { useState} from 'react'
+import {useState} from 'react'
 import Intro from "./components/intro.jsx"
 import QuizQuestion from './components/quizQuestion.jsx'
 
 function App() {
 const [questions, setQuestions] = useState([])
 const [chosenAnswer, setChosenAnswer] = useState({})
+const [submitted, setSubmitted] = useState(false)
 
 function selectAwnser(quesIndex, ans){
   setChosenAnswer(prevAnswer =>{
     return {...prevAnswer, [quesIndex] : ans}
   })
 }
+
+function submitAnswers(){
+  setSubmitted(true)
+}
+
+function playAgain(){
+  setSubmitted(false)
+  setChosenAnswer({})
+  generateQuestionArr()
+}
+
+let allAnswered = false 
+if(questions.length > 0 && Object.keys(chosenAnswer).length === questions.length){
+  allAnswered = true
+}
+
+
 
     function generateQuestionArr(){
      fetch("https://opentdb.com/api.php?amount=5&category=15&difficulty=medium&type=multiple")
@@ -36,7 +54,10 @@ function selectAwnser(quesIndex, ans){
   return (
   <main>
   {questions.length === 0 ? <Intro start={generateQuestionArr} /> : quizList}
-
+  {allAnswered ? <div>
+        {submitted? <p> You scored X/5 correct!</p> : null}
+        <button onClick={!submitted? submitAnswers : playAgain}>{!submitted ? "Check Answers" : "Play Again" }</button>
+        </div> : null}
   </main>  
   )
 }
